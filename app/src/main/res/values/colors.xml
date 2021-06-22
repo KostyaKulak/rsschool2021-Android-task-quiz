@@ -17,4 +17,47 @@
     <color name="deep_purple_100">#d1c4e9</color>
     <color name="deep_purple_100_light">#fff7ff</color>
     <color name="deep_purple_100_dark">#a094b7</color>
+
+    <color name="red">#FF0000</color>
+    <color name="fire_brick">#B22222</color>
+    <color name="dark_red">#8B0000</color>
+    <color name="crimson">#DC143C</color>
+    <color name="salmon">#FA8072</color>
+    <color name="indian_red">#CD5C5C</color>
+
+    <color name="pink">#FFC0CB</color>
+    <color name="light_pink">#FFB6C1</color>
+    <color name="hot_pink">#FF69B4</color>\
+    <color name="deep_pink">#FF1493</color>
+    <color name="medium_violet_red">#C71585</color>
+    <color name="pale_violet_red">#DB7093</color>
+
+    <color name="lime_green">#32CD32</color>
+    <color name="lime">#00FF00</color>
+    <color name="pale_green">#98FB98</color>
+    <color name="sea_green">#2E8B57</color>
+    <color name="dark_green">#006400</color>
+    <color name="forest_green">#228B22</color>
+
+    <color name="orange_red">#FF4500</color>
+    <color name="ligth_salamon">#FFA07A</color>
+    <color name="coral">#FF7F50</color>
+    <color name="tomato">#FF6347</color>
+    <color name="dark_orange">#FF8C00</color>
+    <color name="orange">#FFA500</color>
+
+    <color name="dodger_blue">#1E90FF</color>
+    <color name="corn_flower_blue">#6495ED</color>
+    <color name="medium_slate_blue">#7B68EE</color>
+    <color name="royal_blue">#4169E1</color>
+    <color name="deep_sky_blue">#00BFFF</color>
+    <color name="steel_blue">#4682B4</color>
+
+    <color name="olive_drub">#6B8E23</color>
+    <color name="olive">#808000</color>
+    <color name="dark_olive_green">#556B2F</color>
+    <color name="yellow_green">#9ACD32</color>
+    <color name="spring_green">#00FF7F</color>
+    <color name="green">#008000</color>
+
 </resources>
