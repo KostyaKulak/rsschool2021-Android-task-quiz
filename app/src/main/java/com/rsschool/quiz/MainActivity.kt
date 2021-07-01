@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatSpinner
 import com.rsschool.quiz.data.CATEGORIES
-import com.rsschool.quiz.data.QuizData
 import com.rsschool.quiz.data.category
 import com.rsschool.quiz.databinding.ActivityMainBinding
 import kotlin.system.exitProcess
@@ -52,13 +51,13 @@ class MainActivity : AppCompatActivity(), QuizFragmentListener, ResultFragmentLi
         }
     }
 
-    override fun replaceFragment(reset: Boolean, questionCount: Int?, currentAnswers: MutableMap<Int?, String>?) {
+    override fun replaceFragment(reset: Boolean, questionCount: Int?, currentAnswers: MutableMap<Int, MutableList<Int>>?) {
         supportFragmentManager.beginTransaction()
             .replace(binding.hostFragment.id, QuizFragment.newInstance(reset, questionCount, currentAnswers))
             .commit()
     }
 
-    override fun openResultFragment(result: Int, answers: Map<Int?, String>) {
+    override fun openResultFragment(result: Int, answers: Map<Int, MutableList<Int>>) {
         supportFragmentManager.beginTransaction()
             .replace(binding.hostFragment.id, ResultFragment.newInstance(result, answers))
             .commit()

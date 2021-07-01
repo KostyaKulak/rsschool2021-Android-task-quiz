@@ -16,7 +16,7 @@ class ResultFragment : Fragment() {
     private val binding get() = requireNotNull(_binding)
     private var score = 0
     private var clickListener: MainActivity? = null
-    private var answers: MutableMap<Int, String?> = mutableMapOf()
+    private var answers: MutableMap<Int, List<Int>> = mutableMapOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +56,9 @@ class ResultFragment : Fragment() {
         if (arg != null) {
             score = arg.getInt(RESULT)
 
-            for (i in 1..5) {
-                val value = arg.getString(i.toString())
-                answers[i] = value
+            for (i in 1..quizData.questionsList().size) {
+                val value = arg.getIntegerArrayList(i.toString())
+                answers[i] = value!!.toList()
             }
         }
         uiUpdate()
@@ -87,9 +87,15 @@ class ResultFragment : Fragment() {
 
     private fun generateQuizReport(): String {
         var message = "Your result: $score %\n\n"
-        for (i in 1..5) {
+        for (i in 1..quizData.questionsList().size) {
             message += "$i) ${quizData.questionsList()[i].toString()}\n"
-            message += "Your answer: ${answers[i]?.let { quizData.answersList()[i]?.get(it.toInt() - 1) }}\n\n"
+            message += "Your answers: ${
+                answers[i]?.let {
+                    it.map { answer ->
+                        quizData.answersList()[i]?.get(answer - 1)
+                    }.joinToString { "," }
+                }
+            }\n\n"
 
         }
         return message
@@ -98,13 +104,12 @@ class ResultFragment : Fragment() {
     companion object {
         private const val RESULT = "result"
 
-        fun newInstance(result: Int, answers: Map<Int?, String>): ResultFragment {
+        fun newInstance(result: Int, answers: Map<Int, MutableList<Int>>): ResultFragment {
             val fragment = ResultFragment()
-            //использовать bundleOf не представляется возможным, т.к. нужно в bundle поместить map с моими типами параметров
             val args = Bundle()
             args.putInt(RESULT, result)
             for (answer in answers) {
-                args.putString(answer.key.toString(), answer.value)
+                args.putIntegerArrayList(answer.key.toString(), answer.value as ArrayList<Int>)
             }
 
             fragment.arguments = args
