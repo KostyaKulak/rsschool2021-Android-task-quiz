@@ -22,12 +22,12 @@ class QuizData(var category: String = "") {
     }
 
     fun answersList(): Map<Int, List<String>> = questions.indices.associateWith {
-        questions[it].answers.values.toList()
+        questions[it].answers.values.toList().filterNotNull()
     }
 
-    fun rightAnswersList(): Map<Int, String> = questions.indices.associateWith {
+    fun rightAnswersList(): Map<Int, List<Int>> = questions.indices.associateWith {
         val correctAnswers = questions[it].correctAnswers.toList()
-        correctAnswers.indices.find { i -> correctAnswers[i].equals("true") }.toString()
+        correctAnswers.indices.filter { i -> correctAnswers[i].equals("true") }
     }
 
     companion object {
